@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Daycare.Models;
 
@@ -13,4 +14,6 @@ public class Student
     public string? PhoneNumber { get; set; }
     [Display(Name = "Parent Name")]
     public string? ParentName { get; set; }
+
+    public ICollection<DailyReport>? Reports;
 }
