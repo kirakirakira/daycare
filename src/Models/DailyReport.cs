@@ -5,8 +5,11 @@ namespace Daycare.Models;
 
 public class DailyReport
 {
+    [Key]
     public int DailyReportId { get; set; }
-
-    [ForeignKey("StudentId")]
-    public Student? Student { get; set; }
+    public string? Behavior { get; set; }
+    [Display(Name = "Number Of Poops")]
+    public int? NumberOfPoops { get; set; }
+    public int StudentId { get; set; }
+    public Student Student { get; set; }
 }

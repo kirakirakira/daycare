@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Daycare.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220617195133_AddReports")]
-    partial class AddReports
+    [Migration("20220617204230_StartOver2")]
+    partial class StartOver2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,13 @@ namespace Daycare.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("StudentId")
+                    b.Property<string>("Behavior")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("NumberOfPoops")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("StudentId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("DailyReportId");
@@ -61,7 +67,9 @@ namespace Daycare.Migrations
                 {
                     b.HasOne("Daycare.Models.Student", "Student")
                         .WithMany("Reports")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Student");
                 });

@@ -21,9 +21,9 @@ namespace Daycare.Controllers
         // GET: DailyReport
         public async Task<IActionResult> Index()
         {
-              return _context.DailyReports != null ? 
-                          View(await _context.DailyReports.ToListAsync()) :
-                          Problem("Entity set 'Context.DailyReports'  is null.");
+            return _context.DailyReports != null ?
+                        View(await _context.DailyReports.ToListAsync()) :
+                        Problem("Entity set 'Context.DailyReports'  is null.");
         }
 
         // GET: DailyReport/Details/5
@@ -55,10 +55,19 @@ namespace Daycare.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DailyReportId")] DailyReport dailyReport)
+        public async Task<IActionResult> Create([Bind("StudentId,DailyReportId,Behavior,NumberOfPoops")] DailyReport dailyReport)
         {
-            if (ModelState.IsValid)
+            Student? student = await _context.Students.FindAsync(dailyReport.StudentId);
+
+            ICollection<Student> students = await _context.Students.ToListAsync();
+
+            if (student != null)
             {
+                dailyReport.Student = student;
+                // }
+
+                // if (ModelState.IsValid)
+                // {
                 _context.Add(dailyReport);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -87,7 +96,7 @@ namespace Daycare.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DailyReportId")] DailyReport dailyReport)
+        public async Task<IActionResult> Edit(int id, [Bind("DailyReportId,Behavior,NumberOfPoops")] DailyReport dailyReport)
         {
             if (id != dailyReport.DailyReportId)
             {
@@ -149,14 +158,14 @@ namespace Daycare.Controllers
             {
                 _context.DailyReports.Remove(dailyReport);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool DailyReportExists(int id)
         {
-          return (_context.DailyReports?.Any(e => e.DailyReportId == id)).GetValueOrDefault();
+            return (_context.DailyReports?.Any(e => e.DailyReportId == id)).GetValueOrDefault();
         }
     }
 }
