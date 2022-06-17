@@ -180,6 +180,8 @@ ClientBin/
 *~
 *.dbmdl
 *.dbproj.schemaview
+*.db-shm
+*.db-wal
 *.pfx
 *.publishsettings
 node_modules/
