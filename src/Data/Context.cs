@@ -11,4 +11,5 @@ public class Context : DbContext
     }
 
     public DbSet<Student>? Students { get; set; }
+    public DbSet<DailyReport>? DailyReports { get; set; }
 }

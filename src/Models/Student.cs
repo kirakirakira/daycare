@@ -15,5 +15,5 @@ public class Student
     [Display(Name = "Parent Name")]
     public string? ParentName { get; set; }
 
-    public ICollection<DailyReport>? Reports;
+    public ICollection<DailyReport>? Reports { get; set; }
 }
