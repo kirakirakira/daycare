@@ -64,10 +64,6 @@ namespace Daycare.Controllers
             if (student != null)
             {
                 dailyReport.Student = student;
-                // }
-
-                // if (ModelState.IsValid)
-                // {
                 _context.DailyReports.Add(@dailyReport);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
