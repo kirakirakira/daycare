@@ -45,8 +45,10 @@ namespace Daycare.Controllers
         }
 
         // GET: DailyReport/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            ICollection<Student> students = await _context.Students.ToListAsync();
+            ViewBag.Students = students;
             return View();
         }
 

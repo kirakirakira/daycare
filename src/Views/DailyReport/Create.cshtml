@@ -8,6 +8,21 @@
 
 <h4>DailyReport</h4>
 <hr />
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    @foreach (Student student in ViewBag.Students)
+    {
+        <tr>
+            <td>@student.StudentId</td>
+            <td>@student.Name</td>
+        </tr>
+    }
+</table>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
