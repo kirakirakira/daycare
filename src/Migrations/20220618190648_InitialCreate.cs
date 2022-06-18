@@ -4,7 +4,7 @@
 
 namespace Daycare.Migrations
 {
-    public partial class StartOver2 : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

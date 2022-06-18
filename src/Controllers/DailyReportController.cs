@@ -22,7 +22,7 @@ namespace Daycare.Controllers
         public async Task<IActionResult> Index()
         {
             return _context.DailyReports != null ?
-                        View(await _context.DailyReports.ToListAsync()) :
+                        View(await _context.DailyReports.Include(b => b.Student).ToListAsync()) :
                         Problem("Entity set 'Context.DailyReports'  is null.");
         }
 
@@ -47,8 +47,8 @@ namespace Daycare.Controllers
         // GET: DailyReport/Create
         public async Task<IActionResult> Create()
         {
-            var students = new SelectList(_context.Students, nameof(Student.StudentId), nameof(Student.Name));
-            ViewBag.Students = students;
+            var students = await _context.Students.ToListAsync();
+            ViewData["Students"] = new SelectList(_context.Students, nameof(Student.StudentId), nameof(Student.Name));
             return View();
         }
 
@@ -57,20 +57,18 @@ namespace Daycare.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentId,DailyReportId,Behavior,NumberOfPoops")] DailyReport dailyReport)
+        public async Task<IActionResult> Create(DailyReport @dailyReport)
         {
             Student? student = await _context.Students.FindAsync(dailyReport.StudentId);
-
-            ICollection<Student> students = await _context.Students.ToListAsync();
 
             if (student != null)
             {
                 dailyReport.Student = student;
-            }
+                // }
 
-            if (ModelState.IsValid)
-            {
-                _context.Add(dailyReport);
+                // if (ModelState.IsValid)
+                // {
+                _context.DailyReports.Add(@dailyReport);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

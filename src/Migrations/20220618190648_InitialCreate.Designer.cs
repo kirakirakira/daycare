@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Daycare.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220617204230_StartOver2")]
-    partial class StartOver2
+    [Migration("20220618190648_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
