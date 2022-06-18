@@ -8,7 +8,7 @@
 
 <h4>DailyReport</h4>
 <hr />
-
+@* 
 <table>
     <tr>
         <th>Id</th>
@@ -21,17 +21,21 @@
             <td>@student.Name</td>
         </tr>
     }
-</table>
+</table> *@
 
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <select asp-for="StudentId" asp-items="ViewBag.Students"></select>
+                <span asp-validation-for="StudentId" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
                 <label asp-for="StudentId" class="control-label"></label>
                 <input asp-for="StudentId" class="form-control" />
                 <span asp-validation-for="StudentId" class="text-danger"></span>
-            </div>
+            </div> *@
             <div class="form-group">
                 <label asp-for="Behavior" class="control-label"></label>
                 <input asp-for="Behavior" class="form-control" />

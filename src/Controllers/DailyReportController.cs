@@ -47,7 +47,7 @@ namespace Daycare.Controllers
         // GET: DailyReport/Create
         public async Task<IActionResult> Create()
         {
-            ICollection<Student> students = await _context.Students.ToListAsync();
+            var students = new SelectList(_context.Students);
             ViewBag.Students = students;
             return View();
         }
@@ -59,17 +59,17 @@ namespace Daycare.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("StudentId,DailyReportId,Behavior,NumberOfPoops")] DailyReport dailyReport)
         {
-            Student? student = await _context.Students.FindAsync(dailyReport.StudentId);
+            // Student? student = await _context.Students.FindAsync(dailyReport.StudentId);
 
-            ICollection<Student> students = await _context.Students.ToListAsync();
+            // ICollection<Student> students = await _context.Students.ToListAsync();
 
-            if (student != null)
+            // if (student != null)
+            // {
+            //     dailyReport.Student = student;
+            // }
+
+            if (ModelState.IsValid)
             {
-                dailyReport.Student = student;
-                // }
-
-                // if (ModelState.IsValid)
-                // {
                 _context.Add(dailyReport);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
