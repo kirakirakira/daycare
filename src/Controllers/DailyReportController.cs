@@ -34,7 +34,7 @@ namespace Daycare.Controllers
                 return NotFound();
             }
 
-            var dailyReport = await _context.DailyReports
+            var dailyReport = await _context.DailyReports.Include(b => b.Student)
                 .FirstOrDefaultAsync(m => m.DailyReportId == id);
             if (dailyReport == null)
             {
@@ -74,6 +74,9 @@ namespace Daycare.Controllers
         // GET: DailyReport/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var students = await _context.Students.ToListAsync();
+            ViewData["Students"] = new SelectList(_context.Students, nameof(Student.StudentId), nameof(Student.Name));
+
             if (id == null || _context.DailyReports == null)
             {
                 return NotFound();
@@ -92,14 +95,16 @@ namespace Daycare.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DailyReportId,Behavior,NumberOfPoops")] DailyReport dailyReport)
+        public async Task<IActionResult> Edit(int id, [Bind("StudentId,DailyReportId,Behavior,NumberOfPoops")] DailyReport dailyReport)
         {
             if (id != dailyReport.DailyReportId)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            Student? student = await _context.Students.FindAsync(dailyReport.StudentId);
+
+            if (student != null)
             {
                 try
                 {

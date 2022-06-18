@@ -11,7 +11,6 @@ public class DailyReport
     public string? Behavior { get; set; }
     [Display(Name = "Number Of Poops")]
     public int? NumberOfPoops { get; set; }
-    [BindProperty]
     public int StudentId { get; set; }
     public Student Student { get; set; }
 }
