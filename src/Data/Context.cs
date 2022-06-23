@@ -3,7 +3,7 @@ using Daycare.Models;
 
 public class Context : DbContext
 {
-    public Context() : base() { }
+    public Context() : base() { Database.EnsureCreated(); }
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
         // connect to sqlite database
@@ -11,4 +11,5 @@ public class Context : DbContext
     }
 
     public DbSet<Student>? Students { get; set; }
+    public DbSet<DailyReport>? DailyReports { get; set; }
 }

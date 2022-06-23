@@ -10,13 +10,35 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Daycare.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220616231941_InitialCreate")]
+    [Migration("20220618190648_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.6");
+
+            modelBuilder.Entity("Daycare.Models.DailyReport", b =>
+                {
+                    b.Property<int>("DailyReportId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Behavior")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("NumberOfPoops")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("DailyReportId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("DailyReports");
+                });
 
             modelBuilder.Entity("Daycare.Models.Student", b =>
                 {
@@ -39,6 +61,22 @@ namespace Daycare.Migrations
                     b.HasKey("StudentId");
 
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("Daycare.Models.DailyReport", b =>
+                {
+                    b.HasOne("Daycare.Models.Student", "Student")
+                        .WithMany("Reports")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("Daycare.Models.Student", b =>
+                {
+                    b.Navigation("Reports");
                 });
 #pragma warning restore 612, 618
         }

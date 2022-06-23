@@ -21,9 +21,9 @@ namespace Daycare.Controllers
         // GET: Student
         public async Task<IActionResult> Index()
         {
-              return _context.Students != null ? 
-                          View(await _context.Students.ToListAsync()) :
-                          Problem("Entity set 'Context.Students'  is null.");
+            return _context.Students != null ?
+                        View(await _context.Students.ToListAsync()) :
+                        Problem("Entity set 'Context.Students'  is null.");
         }
 
         // GET: Student/Details/5
@@ -34,7 +34,7 @@ namespace Daycare.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students
+            var student = await _context.Students.Include(b => b.Reports)
                 .FirstOrDefaultAsync(m => m.StudentId == id);
             if (student == null)
             {
@@ -149,14 +149,14 @@ namespace Daycare.Controllers
             {
                 _context.Students.Remove(student);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool StudentExists(int id)
         {
-          return (_context.Students?.Any(e => e.StudentId == id)).GetValueOrDefault();
+            return (_context.Students?.Any(e => e.StudentId == id)).GetValueOrDefault();
         }
     }
 }
