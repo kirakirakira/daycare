@@ -95,7 +95,7 @@ namespace Daycare.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StudentId,DailyReportId,Behavior,NumberOfPoops")] DailyReport dailyReport)
+        public async Task<IActionResult> Edit(int id, [Bind("StudentId,DailyReportId,Date,Behavior,NumberOfPoops")] DailyReport dailyReport)
         {
             if (id != dailyReport.DailyReportId)
             {

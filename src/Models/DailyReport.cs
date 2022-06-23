@@ -8,6 +8,7 @@ public class DailyReport
 {
     [Key]
     public int DailyReportId { get; set; }
+    public DateTime Date { get; set; }
     public string? Behavior { get; set; }
     [Display(Name = "Number Of Poops")]
     public int? NumberOfPoops { get; set; }
