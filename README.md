@@ -4,7 +4,7 @@ Keep in touch with your little one while they are learning and growing at Dino D
 
 ## Technologies Used
 - .NET Core 6.0
-- MySQL
+- SQlite
 - Entity Framework Core
 - ASP.NET
 
@@ -16,7 +16,6 @@ Keep in touch with your little one while they are learning and growing at Dino D
 ## How to run
 1. Clone
 1. Navigate to folder
-1. Start MySQL server locally and update connection string? Need to run migrations and update?
 1. Run `dotnet build`
 1. Run `dotnet run`
 1. Open link in browser
