@@ -158,5 +158,24 @@ namespace Daycare.Controllers
         {
             return (_context.Students?.Any(e => e.StudentId == id)).GetValueOrDefault();
         }
+
+        // Search for a student
+        [HttpPost]
+        public async Task<IActionResult> Search([Bind("SearchString")] string? searchString)
+        {
+            if (searchString == null || _context.Students == null)
+            {
+                return NotFound();
+            }
+
+            var student = await _context.Students.Include(b => b.Reports)
+                .FirstOrDefaultAsync(m => m.Name == searchString);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            return View(student);
+        }
     }
 }
