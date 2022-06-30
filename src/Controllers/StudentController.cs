@@ -18,12 +18,19 @@ namespace Daycare.Controllers
             _context = context;
         }
 
-        // GET: Student
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return _context.Students != null ?
-                        View(await _context.Students.ToListAsync()) :
-                        Problem("Entity set 'Context.Students'  is null.");
+            IEnumerable<Student> students = await _context.Students.ToListAsync();
+
+            if (String.IsNullOrEmpty(searchString))
+            {
+                return View(students);
+            }
+            else
+            {
+                students = students.Where(s => s.Name!.Contains(searchString));
+                return View(students.ToList());
+            }
         }
 
         // GET: Student/Details/5
