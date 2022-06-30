@@ -32,10 +32,12 @@
                             <a class="nav-link" asp-area="" asp-controller="DailyReport" asp-action="Index">Daily Reports</a>
                         </li>
                     </ul>
-                    @* <form class="d-flex">
-                        <input class="form-control me-sm-2" type="text" placeholder="Search for a student" asp-for="SearchString">
-                        <input class="btn btn-secondary my-2 my-sm-0" type="submit" value="Search">
-                    </form> *@
+                    <form asp-controller="DailyReport" asp-action="Index">
+                        <p>
+                            Search student reports by name: <input type="text" name="SearchString" />
+                            <input type="submit" value="Filter" />
+                        </p>
+                    </form>
                 </div>
             </div>
         </nav>
