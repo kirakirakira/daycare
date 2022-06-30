@@ -15,7 +15,9 @@ Keep in touch with your little one while they are learning and growing at Dino D
 
 ## How to run
 1. Clone
-1. Navigate to folder
+1. Navigate to where you cloned the project
+1. Navigate to `src/` by doing `cd src/`
+1. Update database `dotnet ef database update` (EF CLI tool: https://docs.microsoft.com/en-us/ef/core/cli/dotnet)
 1. Run `dotnet build`
 1. Run `dotnet run`
 1. Open link in browser
