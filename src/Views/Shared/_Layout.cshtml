@@ -32,6 +32,12 @@
                             <a class="nav-link" asp-area="" asp-controller="DailyReport" asp-action="Index">Daily Reports</a>
                         </li>
                     </ul>
+                    <form asp-controller="DailyReport" asp-action="Index">
+                        <p>
+                            Search student reports by name: <input type="text" name="SearchString" />
+                            <input type="submit" value="Filter" />
+                        </p>
+                    </form>
                 </div>
             </div>
         </nav>
