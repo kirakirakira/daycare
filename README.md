@@ -33,3 +33,4 @@ Keep in touch with your little one while they are learning and growing at Dino D
 1. CRUD - Create, read, update, delete student daily reports
 
 ## To Do
+See Issues tab.
