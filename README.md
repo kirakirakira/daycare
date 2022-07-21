@@ -17,10 +17,10 @@ Keep in touch with your little one while they are learning and growing at Dino D
 1. Clone
 1. Navigate to where you cloned the project
 1. Navigate to `src/` by doing `cd src/`
-1. Update database `dotnet ef database update` (EF CLI tool: https://docs.microsoft.com/en-us/ef/core/cli/dotnet)
 1. Run `dotnet build`
 1. Run `dotnet run`
 1. Open link in browser
+(If you need to update the database: `dotnet ef database update` (To install EF CLI tool: https://docs.microsoft.com/en-us/ef/core/cli/dotnet))
 
 ## Requirements
 1. You must create at least one class, then create at least one object of that class and populate it with data. You must use or display the data in your application.
