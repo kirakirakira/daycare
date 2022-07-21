@@ -9,7 +9,7 @@ namespace tests;
 public class StudentTests
 {
     [Fact]
-    public void StudentHasAName()
+    public void HasAName()
     {
         Student student = new Student();
         string name = "Kira";
@@ -19,7 +19,7 @@ public class StudentTests
     }
 
     [Fact]
-    public void StudentHasABirthDate()
+    public void HasABirthDate()
     {
         Student student = new Student();
         DateTime birthDate = new DateTime(2010, 01, 02);
@@ -29,7 +29,7 @@ public class StudentTests
     }
 
     [Fact]
-    public void StudentHasAPhoneNumber()
+    public void HasAPhoneNumber()
     {
         Student student = new Student();
         string phoneNumber = "555-555-1234";
@@ -39,7 +39,7 @@ public class StudentTests
     }
 
     [Fact]
-    public void StudentHasAParentName()
+    public void HasAParentName()
     {
         Student student = new Student();
         string parentName = "555-555-1234";
@@ -49,7 +49,7 @@ public class StudentTests
     }
 
     [Fact]
-    public void StudentCanHaveACollectionOfRecords()
+    public void HasACollectionOfRecords()
     {
         Student student1 = new Student();
         student1.Name = "Kira";
