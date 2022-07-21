@@ -24,8 +24,10 @@ Keep in touch with your little one while they are learning and growing at Dino D
 
 ## Requirements
 1. You must create at least one class, then create at least one object of that class and populate it with data. You must use or display the data in your application.
+   - [Student Model](src/Models/Student.cs) & [Populating it with data](https://github.com/kirakirakira/daycare/blob/ee35f50d2aa8fc7efb9ef4b47f7ce8db145b7dea/src/Controllers/StudentController.cs#L23-L24)
 1. Create and call at least 3 functions or methods, at least one of which must return a value that is used in your application.
 1. Create 3 or more unit tests for your application.
+   - [Tests](tests/)
 1. Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program.
 1. Use a LINQ query to retrieve information from a data structure (such as a list or array) or file
 
