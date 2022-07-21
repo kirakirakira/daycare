@@ -20,11 +20,11 @@ Keep in touch with your little one while they are learning and growing at Dino D
 1. Run `dotnet build`
 1. Run `dotnet run`
 1. Open link in browser
-(If you need to update the database: `dotnet ef database update` (To install EF CLI tool: https://docs.microsoft.com/en-us/ef/core/cli/dotnet))
+1. (If you need to update the database: `dotnet ef database update` (To install EF CLI tool: https://docs.microsoft.com/en-us/ef/core/cli/dotnet))
 
 ## Requirements
 1. You must create at least one class, then create at least one object of that class and populate it with data. You must use or display the data in your application.
-   - [Student Model](src/Models/Student.cs) & [Populating it with data](https://github.com/kirakirakira/daycare/blob/ee35f50d2aa8fc7efb9ef4b47f7ce8db145b7dea/src/Controllers/StudentController.cs#L23-L24)
+   - [Student Model](src/Models/Student.cs) & [Populating it with data](https://github.com/kirakirakira/daycare/blob/ee35f50d2aa8fc7efb9ef4b47f7ce8db145b7dea/src/Controllers/StudentController.cs#L23)
 1. Create and call at least 3 functions or methods, at least one of which must return a value that is used in your application.
 1. Create 3 or more unit tests for your application.
    - [Tests](tests/)
