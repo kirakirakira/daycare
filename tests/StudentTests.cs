@@ -1,6 +1,8 @@
 using Xunit;
 using Daycare.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace tests;
 
@@ -36,6 +38,7 @@ public class StudentTests
         Assert.Equal(phoneNumber, student.PhoneNumber);
     }
 
+    [Fact]
     public void StudentHasAParentName()
     {
         Student student = new Student();
@@ -45,18 +48,26 @@ public class StudentTests
         Assert.Equal(parentName, student.ParentName);
     }
 
-    public void StudentHasACollectionOfRecords()
+    [Fact]
+    public void StudentCanHaveACollectionOfRecords()
     {
-        Student student = new Student();
-        DailyReport report1 = new DailyReport(
-            1,
-            new DateTime(2020, 02, 20),
-            "great",
-            3,
-            student.StudentId,
-            student
-        );
+        Student student1 = new Student();
+        student1.Name = "Kira";
+        student1.BirthDate = new DateTime(2020, 01, 20);
+        student1.PhoneNumber = "353-344-1235";
+        student1.ParentName = "Joe";
 
-        Assert.Equal(parentName, student.ParentName);
+        DailyReport report1 = new DailyReport();
+        report1.Date = new DateTime(2020, 02, 20);
+        report1.Behavior = "great";
+        report1.NumberOfPoops = 3;
+        report1.Student = student1;
+
+        ICollection<DailyReport> reports = new List<DailyReport>();
+        reports.Add(report1);
+
+        student1.Reports = reports;
+
+        Assert.Equal(report1, student1.Reports.FirstOrDefault());
     }
 }
