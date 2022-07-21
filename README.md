@@ -31,6 +31,7 @@ Keep in touch with your little one while they are learning and growing at Dino D
 1. Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program.
 1. Use a LINQ query to retrieve information from a data structure (such as a list or array) or file
    - [Searching for student](https://github.com/kirakirakira/daycare/blob/e6953ac5c6624558c7e6ba0e7e00ed4f1a21fbcb/src/Controllers/StudentController.cs#L31)
+
 ## Features
 1. CRUD - Create, read, update, delete student daily reports
 
